@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 
 template <class T>
 class BinarySearchTree
@@ -22,7 +23,9 @@ public:
 	bool insert(T);
 	bool insert(Node*&, Node*&);
 	void display();
+	void outputTree();
 	void printInOrder(Node*&);
+	void outputTreeInOrder(Node*&);
 	void remove(T);
 	void deleteNode(T, Node*&);
 	void makeDeletion(Node*&);
@@ -33,6 +36,7 @@ public:
 	unsigned int numberLeafNodes(Node*&);
 	unsigned int height();
 	unsigned int height(Node*&);
+	std::ofstream out;
 
 
 };
@@ -114,6 +118,24 @@ void BinarySearchTree<T>::printInOrder(Node*& ptrRoot)
 		std::cout << ptrRoot->m_data << std::endl;
 		printInOrder(ptrRoot->m_pRight);
 	}
+}
+
+template <class T>
+void BinarySearchTree<T>::outputTree()
+{
+	outputTreeInOrder(m_pRoot);
+}
+
+template <class T>
+void BinarySearchTree<T>::outputTreeInOrder(Node*& ptrRoot)
+{
+	if (ptrRoot)
+	{
+		outputTreeInOrder(ptrRoot->m_pLeft);
+		out << ptrRoot->m_data << std::endl;
+		outputTreeInOrder(ptrRoot->m_pRight);
+	}
+	
 }
 
 template <class T>
