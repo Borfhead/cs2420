@@ -31,7 +31,8 @@ int main()
    }
    
    //Code to loop though the vector containing the numbers to be inserted into BST.
-   //Prints the entire tree in-order, displaying the height each time
+   //Prints the entire tree in-order, displaying the height each time.
+   //Also prints to output.txt.
    BinarySearchTree<int> tree;
    tree.out.open("output.txt");
    for(auto num : nums)
